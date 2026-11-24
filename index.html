@@ -351,6 +351,14 @@ html[data-theme="light"] .final p{color:#CFC3A6}
 .j-deep-item .j-dia{width:10px;height:10px;background:var(--gold);transform:rotate(45deg);flex:none}
 .j-deep-item svg{margin-left:auto;flex:none;opacity:.9}
 .j-deep-btn{width:100%;border:1px solid var(--gold);background:none;color:var(--gold);border-radius:12px;cursor:pointer;font-size:15.5px;font-weight:700;min-height:52px;font-family:var(--sans)}
+.j-deep-price{margin:0 0 12px;text-align:center;font-size:14px;color:var(--paper-dim);line-height:1.6}
+.j-deep-price b{color:var(--gold);font-size:18px;font-weight:800;letter-spacing:.2px}
+.j-deep-price s{opacity:.6;margin-left:8px;font-size:13px}
+.j-deep-note{margin:10px 0 0;text-align:center;font-size:12.5px;color:var(--paper-dim);line-height:1.6}
+.j-sheet-price{margin:0 0 18px;text-align:center;font-size:14.5px;color:var(--paper-dim);line-height:1.6}
+.j-sheet-price b{color:var(--gold);font-size:19px;font-weight:800}
+.j-sheet-price s{opacity:.6;margin-left:8px;font-size:13.5px}
+.j-sheet .j-sheet-note{margin:0 0 18px;font-size:12.5px;color:var(--paper-dim);line-height:1.6;text-align:center;opacity:.85}
 .j-sheet-veil{display:none;position:fixed;inset:0;background:rgba(2,3,6,.66);z-index:60;align-items:flex-end;justify-content:center}
 .j-sheet-veil.j-open{display:flex}
 .j-sheet{background:var(--ink2);color:var(--paper);width:100%;max-width:560px;border-radius:22px 22px 0 0;padding:26px 24px 34px;border:1px solid var(--line)}
@@ -823,7 +831,9 @@ html[data-theme="light"] .u-dw[aria-pressed="true"]{background:#FDF6DE}
       <h3>심층 풀이로 이어지는 장</h3>
       <p class="j-deep-sub">개안에서 열린 첫 장 너머의 장들은, 명식 전체와 대운의 흐름을 놓고 읽는 오행시 심층 풀이에서 열립니다.</p>
       <div class="j-deep-items" id="jDeepItems"></div>
-      <button class="j-deep-btn" id="jDeepBtn" type="button">심층 풀이 안내 보기</button>
+      <p class="j-deep-price">오픈 특가 <b>9,900원</b> <s>정가 19,900원</s></p>
+      <button class="j-deep-btn" id="jDeepBtn" type="button">심층 풀이 신청하기</button>
+      <p class="j-deep-note">카카오톡 1:1 오픈채팅으로 신청 — 상담으로 명식과 풀이 범위를 확인합니다.</p>
     </div>
     <p class="j-noteline" style="margin-top:26px">개안은 간이 명식 기준의 미리보기입니다. 나머지 장은 오행시 심층 풀이에서 이어서 열립니다.</p>
   </div>
@@ -1260,10 +1270,12 @@ update();
   <div class="j-sheet" role="dialog" aria-modal="true" aria-labelledby="jSheetTitle">
     <h4 id="jSheetTitle"></h4>
     <p id="jSheetBody"></p>
+    <div class="j-sheet-price">오픈 특가 <b>9,900원</b> <s>정가 19,900원</s></div>
     <div class="j-sheet-actions">
       <button class="j-close" id="jSheetClose" type="button">닫기</button>
-      <a class="j-apply" id="jSheetApply" href="#" target="_blank" rel="noopener">심층 풀이 신청하기</a>
+      <a class="j-apply" id="jSheetApply" href="#" target="_blank" rel="noopener noreferrer">카카오톡으로 신청하기</a>
     </div>
+    <p class="j-sheet-note">버튼을 누르면 카카오톡 1:1 오픈채팅이 새 창으로 열립니다.</p>
   </div>
 </div>
 <div id="jToast" role="status"></div>
@@ -1271,8 +1283,8 @@ update();
 <script>
 (function(){
 "use strict";
-/* 심층 풀이 신청 링크 — 스마트스토어 주소가 나오면 이 한 줄의 "#"만 실제 주소로 바꾸면 팝업의 '심층 풀이 신청하기' 버튼에 바로 연결됩니다. */
-const DEEP_READING_URL = "#";
+/* 심층 풀이 신청 링크 — 오행시 카카오톡 1:1 오픈채팅. 팝업의 '카카오톡으로 신청하기' 버튼에 연결됩니다. */
+const DEEP_READING_URL = "https://open.kakao.com/o/sHDlwAYi";
 var jSheetApplyEl = document.getElementById("jSheetApply");
 if (jSheetApplyEl) jSheetApplyEl.href = DEEP_READING_URL;
 var GUIDES = {
@@ -1622,7 +1634,7 @@ var STEMS = [
       }
       $("jDeepBtn").addEventListener("click", function () {
         showSheet("심층 풀이에서 이어집니다",
-          "개안에서는 첫 장까지만 열립니다. 나머지 장은 오행시 심층 풀이에서 명식 전체와 대운의 흐름을 놓고 이어서 읽어 드립니다. 전체 명식과 10년 대운, 월별 타이밍을 담은 심층 풀이는 아래 버튼에서 바로 신청할 수 있습니다.");
+          "개안에서는 첫 장까지만 열립니다. 나머지 장은 오행시 심층 풀이에서 명식 전체와 대운의 흐름을 놓고 이어서 읽어 드립니다. 전체 명식과 10년 대운, 월별 타이밍을 담은 심층 풀이는 오픈 특가 9,900원(정가 19,900원)에 카카오톡 1:1 오픈채팅으로 신청하실 수 있습니다.");
       });
       $("jBackBtn").addEventListener("click", function () {
         $("jDetail").style.display = "none";
