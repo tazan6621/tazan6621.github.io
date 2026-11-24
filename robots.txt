@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tazan6621.github.io/sitemap.xml
