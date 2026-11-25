@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tazan6621.github.io/sitemap.xml
+Sitemap: https://ohaengsi.github.io/sitemap.xml
